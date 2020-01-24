@@ -5,8 +5,12 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
- * @ApiResource()
+ * @ApiResource(
+ *  collectionOperations={"get"},
+ *  itemOperations={"get"}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\OrientationRaceRepository")
  * @ORM\Table(name="Orientation__Race")
  */
@@ -22,7 +26,6 @@ class OrientationRace
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
 
     /**
      * @ORM\Column(type="text")

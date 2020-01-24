@@ -14,7 +14,6 @@ class OrientationRaceFixture extends Fixture
         $faker = Factory::create('fr_FR'); // create a French faker
         //$generator = \Faker\Factory::create();
         $tableauCourse = ["URCA", "Montagne de Reims", "Paris", "Parc de champagne"];
-        $tableauDate = ["1st jannary ","janrary 31st "];
         $dateActuel = new \DateTime("NOW");
  
         $yeardatedebut =  2013;
@@ -23,7 +22,7 @@ class OrientationRaceFixture extends Fixture
         {  
             for($i = $yeardatedebut; $i <= $yeardatefin; $i++){
                 $OrientationRace = new OrientationRace();
-                $date = $faker->dateTimeBetween($tableauDate[0].strval($i),$tableauDate[1].strval($i),null);
+                $date = $faker->dateTimeBetween("1 January ".strval($i),"31 December ".strval($i),null);
                 $OrientationRace->setWillStartAt($date);
                 $text = $faker->text($maxNbChars = 200);
                 $OrientationRace->setDescription($text);
