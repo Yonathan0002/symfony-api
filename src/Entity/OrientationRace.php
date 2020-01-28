@@ -13,7 +13,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
  * @ApiResource(
  *  collectionOperations={"get"},
  *  itemOperations={"get"},
- *  attributes={"order"={"willStartAt","name"}}  
+ *  attributes={"order"={"willStartAt","name"}},
+ *  shortName="Race"  
  * )
  * @ApiFilter(OrderFilter::class, properties={"willStartAt", "name"}, arguments={"orderParameterName"="order"})
  * @ApiFilter(BooleanFilter::class, properties={"isClosed"})
