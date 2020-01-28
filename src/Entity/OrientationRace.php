@@ -4,13 +4,20 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 
 /**
  * @ApiResource(
  *  collectionOperations={"get"},
- *  itemOperations={"get"}
+ *  itemOperations={"get"},
+ *  attributes={"order"={"willStartAt","name"}}  
  * )
+ * @ApiFilter(OrderFilter::class, properties={"willStartAt", "name"}, arguments={"orderParameterName"="order"})
+ * @ApiFilter(BooleanFilter::class, properties={"isClosed"})
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact","name": "exact"})
  * @ORM\Entity(repositoryClass="App\Repository\OrientationRaceRepository")
  * @ORM\Table(name="Orientation__Race")
  */
@@ -26,6 +33,7 @@ class OrientationRace
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $name;
 
     /**
      * @ORM\Column(type="text")
