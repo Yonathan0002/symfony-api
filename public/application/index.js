@@ -6,11 +6,11 @@ function updateList(url){
     fetch(url)
     .then((response)=>{
         //console.log("reponse")
-        return response.json()
+        return response.json();
     })
     .then(function(data){
         console.log(data);
-        var liste = document.createElement("ul")
+        var liste = document.createElement("ul");
         var element = document.createElement("li");
         data["hydra:member"].forEach(race => {
             
@@ -35,7 +35,7 @@ function updateList(url){
             buttonPrevious = document.createElement("button");
             buttonPrevious.innerHTML += `previous`;
             buttonPrevious.addEventListener('click',()=>{
-                updateList(data['hydra:view']['hydra:previous'])
+                updateList(data['hydra:view']['hydra:previous']);
             });
             document.querySelector("div").appendChild(buttonPrevious);
         }    
@@ -47,6 +47,34 @@ function updateList(url){
 
 function bootstrap(){
     updateList("http://localhost:8000/api/races")
+    //setList();
+}
+
+function setUrlParameters(url) {
+    var urlset = url;
+    //modif
+    return urlset;
+}
+
+function setList(){
+    var url = setUrlParameters("http://localhost:8000/api/races");
+    updateList(url);
 }
 
 bootstrap()
+
+console.log(document.querySelector("form"));
+var form = document.querySelector("form");
+
+form[3].addEventListener("click",()=>{
+    console.log(form)
+    
+    for(var i = 0; i < form[1].length; i++){
+        console.log(form[1].options[i].value)
+        if(form[1].options[i].value){
+            console.log("=>",form[1].options[i])
+        }
+    }
+    console.log(form[2].value)
+    event.preventDefault(); 
+},false)
