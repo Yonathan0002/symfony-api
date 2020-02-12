@@ -54,12 +54,12 @@ function bootstrap(){
 
 function setUrlParameters(url) {
     var urlset = url;
-    url += `?order[${form[0].options[form[0].selectedIndex].value}]=asc`
+    urlset += `?order[${form[0].options[form[0].selectedIndex].value}]=asc`
     if(form[1].options[form[1].selectedIndex].value) {
-        url += "&isClosed=" + form[1].options[form[1].selectedIndex].value
+        urlset += "&isClosed=" + form[1].options[form[1].selectedIndex].value
     }
     if(form[2].value){
-        url += "&name=" + form[2].value
+        urlset += "&name=" + form[2].value
     }
     return urlset;
 }
