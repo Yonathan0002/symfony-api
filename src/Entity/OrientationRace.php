@@ -18,7 +18,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
  * )
  * @ApiFilter(OrderFilter::class, properties={"willStartAt", "name"}, arguments={"orderParameterName"="order"})
  * @ApiFilter(BooleanFilter::class, properties={"isClosed"})
- * @ApiFilter(SearchFilter::class, properties={"id": "exact","name": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={"id": "exact","name": "partial"})
  * @ORM\Entity(repositoryClass="App\Repository\OrientationRaceRepository")
  * @ORM\Table(name="Orientation__Race")
  */

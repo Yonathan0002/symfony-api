@@ -1,4 +1,21 @@
-console.log("test");
+function updatePagination(data){
+    if(data['hydra:view']['hydra:next']){
+        buttonNext = document.createElement("button");
+        buttonNext.innerHTML += `next`;
+        buttonNext.addEventListener("click", ()=>{
+            updateList(data['hydra:view']['hydra:next'])
+        });
+        document.querySelector("div").appendChild(buttonNext);
+    } 
+    if(data['hydra:view']['hydra:previous']) {
+        buttonPrevious = document.createElement("button");
+        buttonPrevious.innerHTML += `previous`;
+        buttonPrevious.addEventListener('click',()=>{
+            updateList(data['hydra:view']['hydra:previous']);
+        });
+        document.querySelector("div").appendChild(buttonPrevious);
+    }
+}
 
 function updateList(url){
     document.querySelector("div").innerHTML = '';
@@ -23,23 +40,8 @@ function updateList(url){
         //console.log("=>",data['hydra:view']['hydra:next'])
         
 
-        if(data['hydra:view']['hydra:next']){
-            buttonNext = document.createElement("button");
-            buttonNext.innerHTML += `next`;
-            buttonNext.addEventListener("click", ()=>{
-                updateList(data['hydra:view']['hydra:next'])
-            });
-            document.querySelector("div").appendChild(buttonNext);
-        } 
-        if(data['hydra:view']['hydra:previous']) {
-            buttonPrevious = document.createElement("button");
-            buttonPrevious.innerHTML += `previous`;
-            buttonPrevious.addEventListener('click',()=>{
-                updateList(data['hydra:view']['hydra:previous']);
-            });
-            document.querySelector("div").appendChild(buttonPrevious);
-        }    
-
+            
+        updatePagination(data)
     });
     
     //document.body.appendChild("button")
@@ -52,29 +54,32 @@ function bootstrap(){
 
 function setUrlParameters(url) {
     var urlset = url;
-    //modif
+    url += `?order[${form[0].options[form[0].selectedIndex].value}]=asc`
+    if(form[1].options[form[1].selectedIndex].value) {
+        url += "&isClosed=" + form[1].options[form[1].selectedIndex].value
+    }
+    if(form[2].value){
+        url += "&name=" + form[2].value
+    }
     return urlset;
 }
 
 function setList(){
     var url = setUrlParameters("http://localhost:8000/api/races");
+
     updateList(url);
 }
 
 bootstrap()
 
-console.log(document.querySelector("form"));
 var form = document.querySelector("form");
 
 form[3].addEventListener("click",()=>{
-    console.log(form)
-    
-    for(var i = 0; i < form[1].length; i++){
-        console.log(form[1].options[i].value)
-        if(form[1].options[i].value){
-            console.log("=>",form[1].options[i])
-        }
-    }
-    console.log(form[2].value)
+    //console.log(form)
+    /*
+    console.log(form[0].options[form[0].selectedIndex].value)
+    console.log("=>",form[1].options[form[1].selectedIndex].value)
+    console.log(form[2].value)*/
+    setList()
     event.preventDefault(); 
 },false)
