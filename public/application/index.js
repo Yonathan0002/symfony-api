@@ -26,7 +26,7 @@ function updateList(url){
         return response.json();
     })
     .then(function(data){
-        console.log(data);
+        //console.log(data);
         var liste = document.createElement("ul");
         var element = document.createElement("li");
         data["hydra:member"].forEach(race => {
