@@ -13,7 +13,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
  * @ApiResource(
  *  collectionOperations={"get"},
  *  itemOperations={"get"},
- *  attributes={"order"={"willStartAt","name"}},
+ *  attributes={"pagination_items_per_page"=5,
+ *      "order"={"willStartAt","name"}},
  *  shortName="Race"  
  * )
  * @ApiFilter(OrderFilter::class, properties={"willStartAt", "name"}, arguments={"orderParameterName"="order"})
