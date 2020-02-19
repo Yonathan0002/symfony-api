@@ -1,18 +1,23 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="css/login.css" type="text/css"/>
+{% endblock %}
 {% block body  %}
-<form action="/" method="post">
-    <div>
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="" />
-    </div>
+<div class="loginform">
+    <form action="/" method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="_username" value="" />
+        </div>
 
-    <br>
+        <br>
 
-    <div>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" />
-    </div>
-    <br>
-    <button type="submit">login</button>
-</form>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="_password" />
+        </div>
+        <br>
+        <button type="submit">login</button>
+    </form>
+</div>
 {% endblock %}
