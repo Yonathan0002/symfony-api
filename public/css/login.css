@@ -8,6 +8,7 @@ div.loginform{
 
 form {
     border: 3px solid #f1f1f1;
+
   }
 
 input[type=text], input[type=password] {
@@ -20,7 +21,7 @@ input[type=text], input[type=password] {
   }
 
 button {
-    background-color: #4CAF50;
+  background: linear-gradient(255deg, rgba(131,58,180,1) 0%, rgba(52,25,161,1) 37%, rgba(252,176,69,1) 100%);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -29,4 +30,15 @@ button {
     width: 100%;
   }
 
-body {background-color: #215921;}
+body {
+  background: radial-gradient(circle, rgba(131,58,180,1) 0%, rgba(52,25,161,1) 21%, rgba(67,31,165,1) 45%, rgba(122,78,129,1) 66%, rgba(252,176,69,1) 100%);
+  background-repeat: no-repeat;
+  background-size: fill;
+}
+html {
+  height: 100%;
+}
+
+.loginform {
+  padding-bottom: 30px;
+}
