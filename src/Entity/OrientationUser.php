@@ -48,10 +48,6 @@ class OrientationUser implements UserInterface
      */
     private $avatar;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $mail;
 
     public function getId(): ?int
     {

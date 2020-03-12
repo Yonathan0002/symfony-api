@@ -12,7 +12,7 @@ function updatePagination(data){
         buttonPrevious.innerHTML += `previous`;
         buttonPrevious.addEventListener('click',()=>{
             updateList(data['hydra:view']['hydra:previous']);
-            console.log("<>")
+            //console.log("<>")
         });
         document.querySelector("div").appendChild(buttonPrevious);
     }
